@@ -52,4 +52,14 @@ abstract class Controller {
         call_user_func_array([$this, $this->action], $this->params);
     }
 
+    public function render($template, $params = [])
+    {
+        $suffix = $this->app->config('templates.suffix');
+        if ($suffix && !preg_match('/\.' . $suffix . '$/', $template)) {
+            $template .= '.' . $suffix;
+        }
+
+        $this->app->render($template, $params);
+    }
+
 }
