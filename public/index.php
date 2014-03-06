@@ -1,10 +1,11 @@
 <?php
-require '../vendor/autoload.php';
 
-$app = new \Slim\Slim();
+error_reporting(E_ALL | E_STRICT);
+date_default_timezone_set('America/Fortaleza');
 
-$app->get('/hello/:name', function ($name) {
-    echo "Hello, $name";
-});
+define('BASEDIR', dirname(__DIR__)); // root directory
+define('APPDIR', BASEDIR . '/src'); // app directory
+
+require_once APPDIR . '/start.php';
 
 $app->run();
