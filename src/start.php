@@ -9,3 +9,7 @@ $app = new MySlim(require_once APPDIR . '/config/app.php');
 $app->get('/(:params+)', function ($params = []) use ($app) {
     $app->fireController($params);
 });
+
+$app->post('/(:params+)', function ($params = []) use ($app) {
+    $app->fireController($params);
+});

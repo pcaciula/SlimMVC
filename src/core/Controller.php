@@ -35,10 +35,12 @@ abstract class Controller {
         if (empty($name))
             $name = 'index';
 
-        $this->action = $name;
+        $method = strtolower($this->app->request()->getMethod());
+        $this->action = $method . $name;
 
         if (!method_exists($this, $this->action))
             $this->app->notFound();
+
     }
 
     /**
