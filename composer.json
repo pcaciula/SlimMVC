@@ -10,7 +10,8 @@
         "php": ">=5.4",
         "slim/slim": "2.*",
         "slim/views": "*",
-        "twig/twig": "*"
+        "twig/twig": "*",
+        "gabordemooij/redbean": "dev-master"
     },
     "autoload": {
         "classmap": [

@@ -3,6 +3,7 @@
 define('APP_MODE_DEV', 'development');
 define('APP_MODE_PRO', 'production');
 define('APP_MODE', APP_MODE_DEV);
+define('REDBEAN_MODEL_PREFIX', '\\MyApp\\Models\\'); // Namespace to RedBean
 
 return [
     'app.name' => 'Slim MVC',
@@ -19,5 +20,21 @@ return [
         'auto_reload' => true,
         'strict_variables' => false,
         'autoescape' => true
+    ],
+
+    'db' => [
+        'default' => 'pgsql',
+
+        'connections' => [
+            'pgsql' => [
+                'driver' => 'pgsql',
+                'dsn' => 'pgsql:host=127.0.0.1;dbname=matriculas',
+                'username' => 'postgres',
+                'password' => 'postgres',
+                'charset'  => 'utf8',
+                'prefix'   => '',
+                'schema'   => 'public',
+            ]
+        ]
     ]
 ];

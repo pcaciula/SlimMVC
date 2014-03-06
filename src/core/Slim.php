@@ -8,6 +8,7 @@ class Slim extends \Slim\Slim
         parent::__construct($userSettings);
 
         $this->defineExtensionView();
+        R::initDb($this->config('db'), $this);
     }
 
     /**
