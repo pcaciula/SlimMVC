@@ -6,5 +6,6 @@ define('APP_MODE', APP_MODE_DEV);
 
 return [
     'mode' => APP_MODE,
-    'debug' => APP_MODE === APP_MODE_DEV
+    'debug' => APP_MODE === APP_MODE_DEV,
+    'controller.prefix' => '\\MyApp\\Controllers\\'
 ];
