@@ -1,0 +1,13 @@
+{
+    "name": "paulochavesbr/slimmvc",
+    "authors": [
+        {
+            "name": "Paulo Chaves",
+            "email": "paulochavesbr@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "slim/slim": "2.*"
+    }
+}
