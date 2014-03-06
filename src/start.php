@@ -2,8 +2,9 @@
 
 require BASEDIR . '/vendor/autoload.php';
 
-$app = new \Slim\Slim();
+use MyApp\Core\Slim as MySlim; // Set alias for my Slim class
+
+$app = new MySlim(require_once APPDIR . '/config/app.php');
 
 $app->get('/(:params+)', function ($params = []) {
-    var_dump($params);
 });
