@@ -4,20 +4,26 @@
         {
             "name": "Paulo Chaves",
             "email": "paulochavesbr@gmail.com"
+        },
+        {
+            "name": "Paul Caciula",
+            "email": "pcaciula@gmail.com"
         }
     ],
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.3",
         "slim/slim": "2.*",
         "slim/views": "*",
         "twig/twig": "*",
-        "gabordemooij/redbean": "dev-master"
+        "j4mie/idiorm": "*"
     },
     "autoload": {
         "classmap": [
             "src/core",
             "src/controllers",
-            "src/models"
+            "src/models",
+            "src/middlewares",
+            "src/helpers"
         ]
     }
 }
