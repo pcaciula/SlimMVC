@@ -3,9 +3,8 @@
 define('APP_MODE_DEV', 'development');
 define('APP_MODE_PRO', 'production');
 define('APP_MODE', APP_MODE_DEV);
-define('REDBEAN_MODEL_PREFIX', '\\MyApp\\Models\\'); // Namespace to RedBean
 
-return [
+return array(
     'app.name' => 'Slim MVC',
     'mode' => APP_MODE,
     'debug' => APP_MODE === APP_MODE_DEV,
@@ -14,27 +13,25 @@ return [
     'view' => new \Slim\Views\Twig(),
     'templates.path' => APPDIR . '/views',
     'templates.suffix' => 'html',
-    'templates.options' => [
+    'templates.options' => array(
         'charset' => 'utf-8',
         'cache' => APPDIR . '/storage/cache/twig',
         'auto_reload' => true,
         'strict_variables' => false,
         'autoescape' => true
-    ],
-
-    'db' => [
-        'default' => 'pgsql',
-
-        'connections' => [
-            'pgsql' => [
-                'driver' => 'pgsql',
-                'dsn' => 'pgsql:host=127.0.0.1;dbname=matriculas',
-                'username' => 'postgres',
-                'password' => 'postgres',
+    ),
+    'db' => array(
+         'default' => 'mysql',
+         'connections' => array(
+            'mysql' => array(
+                'driver' => 'mysql',
+                'dbname' => 'calls',
+                'username' => 'cr2',
+                'password' => 'rtv1916clay',
                 'charset'  => 'utf8',
                 'prefix'   => '',
                 'schema'   => 'public',
-            ]
-        ]
-    ]
-];
+            )
+         )
+    )
+);
