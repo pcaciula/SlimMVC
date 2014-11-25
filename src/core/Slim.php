@@ -1,5 +1,7 @@
 <?php
 
+<?php
+
 namespace MyApp\Core;
 
 class Slim extends \Slim\Slim
@@ -8,12 +10,12 @@ class Slim extends \Slim\Slim
         parent::__construct($userSettings);
 
         $this->defineExtensionView();
-        R::initDb($this->config('db'), $this);
+        //$this->initDB($this->config('db'), $this);
     }
 
     /**
-     * Executa a classe do controller requisitado
-     * Caso não exista será devolvido 'Page Not Found'
+     * Execute Requested controller class
+     * If it doesn't exist, do 404
      */
     public function fireController($params)
     {
@@ -27,16 +29,23 @@ class Slim extends \Slim\Slim
 
         $controller = new $classe($this);
         $controller->setName($name);
+        $controller->setDefaultModel();
         $controller->setUriParams($params);
         $controller->execute();
     }
 
     /**
-     * Configurações extras a serem utilizadas com o template engine Twig
+     * Set up Twig Config
      */
     public function defineExtensionView()
     {
         $this->view->parserOptions = $this->config('templates.options');
         $this->view->parserExtensions = array(new \Slim\Views\TwigExtension());
     }
+    
+    public function initDB($config, $app)
+    {
+    
+    }
+
 }
