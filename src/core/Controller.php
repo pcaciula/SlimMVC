@@ -1,5 +1,4 @@
 <?php
-
 namespace MyApp\Core;
 
 abstract class Controller {
@@ -8,6 +7,7 @@ abstract class Controller {
     private $controller;
     private $action;
     private $params;
+    protected $mdl = null;
 
     public function __construct(\MyApp\Core\Slim &$app)
     {
@@ -25,9 +25,9 @@ abstract class Controller {
     }
 
     /**
-     * Obtem a action da uri, caso exista
-     * Se nao existe, chama a action padrao, index
-     * Se não há metodo para a action informada, devolve 'Page Not Found'
+     * Get the action from the uri, if it exists
+     * If it doesn't existe, call the default action, index
+     * If it doesn't exist, do 404
      */
     protected function defineAction()
     {
@@ -44,17 +44,17 @@ abstract class Controller {
     }
 
     /**
-     * Executa a action do controle passando como parametros para a action
-     * os demais argumentos da URL
+     * Execute a controller action passing in all params
+     * including get params from URL
      */
     public function execute()
     {
         $this->defineAction();
         $this->params = array_merge($this->params, $_GET);
-        call_user_func_array([$this, $this->action], $this->params);
+        call_user_func_array(array($this, $this->action), $this->params);
     }
 
-    public function render($template, $params = [])
+    public function render($template, $params = array())
     {
         $suffix = $this->app->config('templates.suffix');
         if ($suffix && !preg_match('/\.' . $suffix . '$/', $template)) {
@@ -63,5 +63,16 @@ abstract class Controller {
 
         $this->app->render($template, $params);
     }
-
+    
+    public function setDefaultModel()
+    {
+         $this->mdl = $this->_model($this->controller);
+    }
+    
+    public function _model($table)
+    {
+        $config = $this->app->config['db']['connections']['mysql'];
+        $mdl = new Model();
+        $mdl->init($table,$config);
+    }
 }
