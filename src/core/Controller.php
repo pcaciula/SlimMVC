@@ -7,6 +7,9 @@ abstract class Controller {
     private $controller;
     private $action;
     private $params;
+    /**
+     * Default Model Matching ControllerName
+     **/
     protected $mdl = null;
 
     public function __construct(\MyApp\Core\Slim &$app)
@@ -68,7 +71,7 @@ abstract class Controller {
     {
          $this->mdl = $this->_model($this->controller);
     }
-    
+    /** Retrieve new ORM table representation **/
     public function _model($table)
     {
         $config = $this->app->config['db']['connections']['mysql'];
