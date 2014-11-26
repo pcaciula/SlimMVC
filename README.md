@@ -1,2 +1,3 @@
-Implementação MVC utilizando Slim Framework
+MVC Implementation of Slim Framework
 ===========================================
+-uses idiorm for models
