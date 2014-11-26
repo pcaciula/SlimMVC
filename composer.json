@@ -23,7 +23,9 @@
             "src/controllers",
             "src/models",
             "src/middlewares",
-            "src/helpers"
+            "src/helpers",
+            "src/config",
+            "idiorm.php"
         ]
     }
 }
